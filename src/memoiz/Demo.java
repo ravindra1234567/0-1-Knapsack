@@ -1,44 +1,63 @@
 package memoiz;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.*;
 
 public class Demo {
 	
-
-	 public static int strStr(String haystack, String needle) {
+	 public static int intersection(int[] nums) {
 	        
-	        int hl = haystack.length();
-	        int nl = needle.length();
+		 int n = nums.length;
+		 	if(n==0)
+		 		return 0;
 
-	        int index=0;
+	        TreeSet<Integer> t = new TreeSet<>();
+
+	        for(int i  : nums)
+	            t.add(i);
 	        
-	        for(int i=0;i<hl;i++){
-	            index =i;
-	            int count =0;
-	            for(int j=0;j<nl;j++){
-	                if( i < hl && haystack.charAt(i) == needle.charAt(j)){
-	                    i++;
-	                    count++;
-	                    System.out.println("count= " + count);
-	                }else{
-	                	System.out.println("count = "+ count +" index = "+ index);
-	                    break;
-	                }
-	                if(count == nl)
-	                    return index;
-	            }
-	        	i = index;
+	        if(t.size()<=2){
+	            return t.last();
 	        }
-	        System.out.println("Index == "+ index );
-	        return -1;
+
+	        t.remove(t.last());
+	        t.remove(t.last());
+	        System.out.println(t);
+
+	        return t.last();
+	        
 	    }
-
+	 
 	public static void main(String[] args) {
-
-		String haystack="mississippi";
-		String needle="issip";
+		int[] nums = {1,2};
 		
-		System.out.println(" result =" +strStr(haystack,needle) );
+		
+		int aa =  intersection(nums);
+		System.out.print(aa);
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
